@@ -1,0 +1,9 @@
+# Big O Notation:
+
+- **O(1): **constante. La operación no depende del tamaño de los datos. Es el caso ideal, pero a la vez probablemente el menos frecuente. No se ve en la gráfica de más abajo porque la logarítmica le pasa justo por encima y la tapa.
+- **O(n):** lineal. El tiempo de ejecución es directamente proporcional al tamaño de los datos. Crece en una línea recta.
+- **O(log n):** logarítmica. por regla general se asocia con algoritmos que "trocean" el problema para abordarlo, como por ejemplo una búsqueda binaria.
+- **O(nlogn):** en este caso se trata de funciones similares a las anteriores, pero que rompen el problema en varios trozos por cada elemento, volviendo a recomponer información tras la ejecución de cada "trozo". Por ejemplo, el algoritmo de búsqueda Quicksort.
+- **O(n2):** cuadrática. Es típico de algoritmos que necesitan realizar una iteración por todos los elementos en cada uno de los elementos a procesar. Por ejemplo el algoritmo de ordenación de burbuja. Si tuviese que hacer la iteración más de una vez serían de complejidad O(n3), O(n4), etc... pero se trata de casos muy raros y poco optimizados.
+- **O(2n):** exponencial. Se trata de funciones que duplican su complejidad con cada elemento añadido al procesamiento. Son algoritmos muy raros pues en condiciones normales no debería ser necesario hacer algo así. Un ejemplo sería, por ejemplo, el cálculo recursivo de la serie de Fibonacci, que es muy poco eficiente (se calcula llamándose a sí misma la función con los dos números anteriores: F(n)=F(n-1)+F(n-2)).
+- **O(n!);** explosión combinatoria. Un algoritmo que siga esta complejidad es un algoritmo totalmente fallido. Una explosión combinatoria se dispara de tal manera que cuando el conjunto crece un poco, lo normal es que se considere computacionalmente inviable. Solo se suele dar en algoritmos que tratan de resolver algo por la mera fuerza bruta. No deberías verlo nunca en un software "real".
