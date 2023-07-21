@@ -41,8 +41,8 @@ export default class Stack<T> {
       return head?.value; // Retornamos el valor que tenia el head previo
     }
     const head = this.head as SNode<T>; // Caso contrario guardamos el head que teniamos en una variable
-    this.head = head.prev; // Hacemos que la nueva cabeza sea el valor alq ue apuntaba el prev del anterior head
-    return head.value; //Retornamos el valor del head qeu borramos.
+    this.head = head.prev; // Hacemos que la nueva cabeza sea el valor al que apuntaba el prev del anterior head
+    return head.value; //Retornamos el valor del head que borramos.
   }
   /**
      Retornamos el valor de la cabeza actual
