@@ -50,8 +50,8 @@ export default class LRU<K, V> {
   private length: number;
   private head?: Node<V>;
   private tail?: Node<V>;
-  private lookup: Map<K, Node<V>>;
-  private reverseLookup: Map<Node<V>, K>;
+  private lookup: Map<K, Node<V>>; //Mapa que usa como key la llave que le pasemos y como valor el nodo.
+  private reverseLookup: Map<Node<V>, K>; //Mapa que usa como Key los nodos y como value el key.
 
   constructor(private capacity: number = 10) {
     this.length = 0;
@@ -60,6 +60,10 @@ export default class LRU<K, V> {
     this.lookup = new Map<K, Node<V>>();
     this.reverseLookup = new Map<Node<V>, K>();
   }
+  /**
+    Metodo para agregar un nodo a la estructura, o para pasarlo a la cabeza y
+    hacerlo el recientemente usado.
+   */
   update(key: K, value: V): void {
     let node = this.lookup.get(key);
     if (!node) {
@@ -75,6 +79,10 @@ export default class LRU<K, V> {
       node.value = value;
     }
   }
+  /**
+    Metodo para obtener un valor, al hacer este proceso inmediatamente pasa a la
+    cabeza como el mas recientemente usado
+   */
   get(key: K): V | undefined {
     const node = this.lookup.get(key);
     if (!node) {
@@ -84,6 +92,9 @@ export default class LRU<K, V> {
     this.prepend(node);
     return node.value;
   }
+  /*
+  Metodo para desconectar el nodo que queremos pasar a la cabeza
+  */
   private detach(node: Node<V>) {
     if (node.prev) {
       node.prev.next = node.next;
@@ -100,6 +111,10 @@ export default class LRU<K, V> {
     node.next = undefined;
     node.prev = undefined;
   }
+  /*
+  Metodo para insertar al inicio de la estructura el nodo utilizado
+  o creado.
+  */
   private prepend(node: Node<V>) {
     if (!this.head) {
       this.head = node;
@@ -110,6 +125,9 @@ export default class LRU<K, V> {
     this.head.prev = node;
     this.head = node;
   }
+  /**
+   Metodo para controlar la capacidad de la estructura de datos
+   */
   private trimCache(): void {
     if (this.length <= this.capacity) {
       return;
