@@ -8,7 +8,7 @@
  */
 
 export const cristalBallsSearch = (floors: boolean[]): number => {
-  const jumpAmount = Math.floor(Math.sqrt(floors.length)); //Halamos la raiz cuadrada del largo del arreglo para hacer el conteo de pasos.
+  const jumpAmount = Math.floor(Math.sqrt(floors.length)); //Hallamos la raiz cuadrada del largo del arreglo para hacer el conteo de pasos.
   let currentFloor = jumpAmount; // hacemos del valor de los salto nuestro piso actual
 
   for (; currentFloor < floors.length; currentFloor += jumpAmount) {
